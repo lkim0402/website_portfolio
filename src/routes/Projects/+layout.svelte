@@ -24,8 +24,8 @@
 		<div class="mb-7 flex flex-row gap-7">
 			{#each categories as category}
 				<button
-					class="text-xl hover:bg-indigo-300 hover:text-white {currentCategory === category
-						? 'bg-indigo-500 text-white'
+					class="text-xl hover:text-indigo-400 {currentCategory === category
+						? 'bg-indigo-300 text-white'
 						: ''}"
 					aria-label={category}
 					onclick={() => setCategory(category)}>{category}</button
