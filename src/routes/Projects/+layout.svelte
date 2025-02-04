@@ -6,7 +6,7 @@
 
 	let { children } = $props();
 
-	let categories = ['All', 'AI/ML', 'Games', 'App', 'Graphics', 'GenArt'];
+	let categories = ['All', 'AI/ML', 'Games', 'Web/App'];
 
 	let currentCategory = $state('All');
 
@@ -18,13 +18,15 @@
 
 <div in:fly={{ y: 200, duration: 2000 }}>
 	<div>
-		<h1 class="text-3xl">Projects</h1>
-		<div style="height:10px"></div>
+		<h1 class="my-[1rem] text-3xl">Projects</h1>
+		<!-- <div style="height:10px"></div> -->
 		<!-- listing the categories -->
-		<div class="flex flex-row gap-7">
+		<div class="mb-7 flex flex-row gap-7">
 			{#each categories as category}
 				<button
-					class="text-xl {currentCategory === category ? 'text-indigo-600' : ''}"
+					class="text-xl hover:bg-indigo-300 hover:text-white {currentCategory === category
+						? 'bg-indigo-500 text-white'
+						: ''}"
 					aria-label={category}
 					onclick={() => setCategory(category)}>{category}</button
 				>
@@ -34,20 +36,17 @@
 	<div class="flex flex-col gap-2">
 		<div style="height:5px"></div>
 
-		{#if currentCategory === 'GenArt'}
-			<p>Creative coding using p5.js</p>
-		{:else if currentCategory === 'Graphics'}
-			<p>Deep dive into computer graphics!</p>
-		{:else if currentCategory === 'AI/ML'}
-			<p>AI/ML projects</p>
+		<!-- {#if currentCategory === 'AI/ML'}
+			<p>An exploration of AI/ML projects using mainly TensorFLow</p>
 		{:else if currentCategory === 'Games'}
 			<p>Game development projects</p>
-		{:else if currentCategory === 'App'}
+		{:else if currentCategory === 'Web/App'}
 			<p>App development projects</p>
-		{/if}
-
-		<!-- listing the projects per category-->
-		<div class="flex flex-row flex-wrap gap-4">
+		{/if} -->
+	</div>
+	<!-- listing the projects per category-->
+	<div class="flex justify-center">
+		<div class="mb-8 grid grid-cols-1 gap-20 2xl:grid-cols-2">
 			{#each projects as project}
 				{#if currentCategory === 'All' || project.type.includes(currentCategory)}
 					<Project {project} />
