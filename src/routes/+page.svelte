@@ -25,7 +25,7 @@
 		Outside of these interests, I...
 		<ul class="list-inside list-disc">
 			<li>love digital art</li>
-			<li>use Obsidian as my main PKS, Notion sometimes</li>
+			<li>use Obsidian as my main PKM (Notion sometimes)</li>
 			<li>love indie/unique games</li>
 		</ul>
 	</section>
