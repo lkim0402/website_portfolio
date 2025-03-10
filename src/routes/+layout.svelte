@@ -1,18 +1,31 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import '../app.css';
 	let { children } = $props();
 
-	let pages = ['Home', 'Resume', 'Projects']; // 'Blog'
+	let pages = ['Home', 'Resume', 'Projects', 'Blog']; //
 
-	let currentPage = $state('Home');
+	// let currentPage = $state('Home');
+	let currentPage = $state($page.url.pathname === '/' ? 'Home' : $page.url.pathname.slice(1));
+
 	function setPage(page: string) {
 		console.log('current page: ' + page);
 		currentPage = page;
 	}
 
+	// onMount(() => {
+	// 	const path = window.location.pathname;
+	// 	const page = path === '/' ? 'Home' : path.slice(1);
+	// 	if (pages.includes(page)) {
+	// 		currentPage = page;
+	// 	}
+	// });
+
 	// for setting blog pages
-	let blogPages = ['Devlog', 'Notes', 'Life', 'Books'];
+
+	let blogPages = ['Main', 'Devlog', 'Notes', 'Life', 'Books'];
 </script>
 
 <div class="min-h-screen">
@@ -42,15 +55,21 @@
 				{/each}
 			</div>
 		</section>
-		<div class="align-center flex flex-row items-center">
+
+		<!-- BLOG AND CONTENT -->
+		<div class="align-center items flex flex-row gap-24">
 			<div>
-				{#if currentPage == 'Blog'}
-					<div class="align-center flex flex-col items-center gap-2">
+				{#if $page.url.pathname.startsWith('/Blog')}
+					<div class=" fixed top-32 mr-10 flex flex-col items-start gap-2">
 						{#each blogPages as page}
-							<a href="/Blog/{page}" class="text-xl" aria-label={page}>{page}</a>
+							<a href="/Blog/{page !== 'Main' ? page : ''}" class="text-xl" aria-label={page}
+								>{page}</a
+							>
+							<!-- {#if page === 'Main'}
+								<a href="/Blog/" class="text-xl" aria-label={page}>{page}</a>
+							{/if} -->
 						{/each}
 					</div>
-					{console.log('Rendering blog pages')}
 				{/if}
 			</div>
 

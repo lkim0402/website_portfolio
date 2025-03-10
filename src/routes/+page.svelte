@@ -24,9 +24,10 @@
 	<section>
 		Outside of these interests, I...
 		<ul class="list-inside list-disc">
-			<li>love digital art</li>
+			<li>love digital art!</li>
 			<li>use Obsidian as my main PKM (Notion sometimes)</li>
 			<li>love indie/unique games</li>
+			<li>am trying to focus on one thing, but I love exploring many things all at once..</li>
 		</ul>
 	</section>
 
